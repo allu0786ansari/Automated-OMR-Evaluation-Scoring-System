@@ -23,7 +23,7 @@ class Exam(Base):
     exam_id = Column(String(128), primary_key=True, index=True)
     name = Column(String(256), nullable=True)
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
-    metadata = Column(JSON, nullable=True)  # optional JSON metadata
+    exam_metadata = Column(JSON, nullable=True)  # optional JSON metadata
 
     # Relationships
     answer_keys = relationship("AnswerKey", back_populates="exam")
