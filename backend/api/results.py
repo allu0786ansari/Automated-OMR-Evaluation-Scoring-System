@@ -9,7 +9,7 @@ import pandas as pd
 
 from db.session import get_db
 from db import crud  # implement functions like get_result_by_sheet, get_results_by_exam
-from services.export_service import generate_results_csv  # implement later
+from services.export_service import export_results_to_csv, export_results_to_excel_bytes, generate_results_dataframe
 
 router = APIRouter(prefix="/results", tags=["results"])
 
@@ -44,7 +44,7 @@ async def export_results(exam_id: str, format: str = "csv", db: Session = Depend
         raise HTTPException(status_code=404, detail="No results for this exam")
 
     # create DataFrame
-    df = pd.DataFrame(results)
+    df = generate_results_dataframe(results)
 
     if format.lower() == "csv":
         stream = io.StringIO()
