@@ -19,3 +19,4 @@ transformers
 torch
 sentence-transformers
 requests
+pymysql
