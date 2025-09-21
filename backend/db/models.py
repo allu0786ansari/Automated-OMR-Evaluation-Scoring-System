@@ -59,7 +59,12 @@ class Sheet(Base):
 
     # Relationships
     exam = relationship("Exam", back_populates="sheets")
-    result = relationship("Result", back_populates="sheet", uselist=False)
+    result = relationship(
+        "Result",
+        back_populates="sheet",
+        uselist=False,
+        foreign_keys="[Result.sheet_id]"  # Specify the correct foreign key
+    )
     audit_logs = relationship("AuditLog", back_populates="sheet")
 
 
@@ -78,7 +83,11 @@ class Result(Base):
     created_at = Column(DateTime, default=datetime.datetime.utcnow)
 
     # Relationships
-    sheet = relationship("Sheet", back_populates="result")
+    sheet = relationship(
+        "Sheet",
+        back_populates="result",
+        foreign_keys="[Result.sheet_id]"  # Specify the correct foreign key
+    )
     exam = relationship("Exam", back_populates="results")
 
 
