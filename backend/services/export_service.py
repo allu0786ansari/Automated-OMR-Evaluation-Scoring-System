@@ -3,8 +3,8 @@ from typing import List, Dict
 import pandas as pd
 import io
 from pathlib import Path
-from ..core.config import settings
-from ..utils.logger import get_logger
+from core.config import settings
+from utils.logger import get_logger
 
 logger = get_logger()
 

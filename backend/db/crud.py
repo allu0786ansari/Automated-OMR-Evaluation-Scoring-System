@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from . import models
 from .session import get_db
 from sqlalchemy import select, insert
-from ..utils.logger import get_logger
+from utils.logger import get_logger
 
 logger = get_logger()
 

@@ -4,11 +4,11 @@ from pathlib import Path
 from datetime import datetime
 from typing import Optional, Dict, Tuple, List
 
-from ..core.config import settings
-from ..utils.image_utils import load_image, rectify_perspective, compute_fill_ratio, save_overlay_image, detect_version_from_header_image
-from ..db import crud
-from ..utils.logger import get_logger
-from ..services.scoring_service import score_answers
+from core.config import settings
+from utils.Image_utils import load_image, rectify_perspective, compute_fill_ratio, save_overlay_image, detect_version_from_header_image
+from db import crud
+from utils.logger import get_logger
+from services.scoring_service import score_answers
 
 logger = get_logger()
 

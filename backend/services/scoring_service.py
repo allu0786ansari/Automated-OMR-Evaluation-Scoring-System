@@ -2,8 +2,8 @@
 from typing import Dict, Optional
 import pandas as pd
 from pathlib import Path
-from ..core.config import settings
-from ..utils.logger import get_logger
+from core.config import settings
+from utils.logger import get_logger
 
 logger = get_logger()
 

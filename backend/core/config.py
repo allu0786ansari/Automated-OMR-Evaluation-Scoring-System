@@ -10,10 +10,9 @@ class Settings(BaseSettings):
     DEBUG: bool = True
 
     # DB (MySQL)
-    # Example: mysql+pymysql://user:password@localhost:3306/omr_db
-    SQLALCHEMY_DATABASE_URL: str = Field(
+    DATABASE_URL: str = Field(
         default="mysql+pymysql://root:A6VLT%40%24cuDYA.4n@localhost:3306/omr_db",
-        env="DATABASE_URL",
+        alias="DATABASE_URL",
     )
 
     # File storage
