@@ -1,28 +1,21 @@
-# backend/db/session.py
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
-from . import models  # noqa: F401
-from ..core.config import settings
-from contextlib import contextmanager
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+import os
+from dotenv import load_dotenv
 
-# Using SQLAlchemy (synchronous engine). We'll wrap blocking calls with asyncio.to_thread in CRUD.
-engine = create_engine(settings.SQLALCHEMY_DATABASE_URL, pool_pre_ping=True, future=True)
+load_dotenv()
+
+DB_USER = os.getenv("DB_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = os.getenv("DB_PORT")
+DB_NAME = os.getenv("DB_NAME")
+
+DATABASE_URL = f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+
+engine = create_engine(DATABASE_URL, echo=True, future=True)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 Base = declarative_base()
-
-
-@contextmanager
-def get_db():
-    """
-    Dependency for FastAPI. Use like:
-    with get_db() as db:
-        ...
-    In FastAPI endpoints we depend on this, but our CRUD wraps blocking ops.
-    """
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
