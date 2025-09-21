@@ -8,11 +8,11 @@ from fastapi import APIRouter, UploadFile, File, Form, BackgroundTasks, Depends,
 from fastapi.responses import JSONResponse, FileResponse
 from sqlalchemy.orm import Session
 
-from ..core.config import settings
-from ..db.session import get_db
-from ..db import crud  # implement later: create_sheet_record, update_sheet_status, get_sheet_by_id
-from ..services import omr_service  # implement later: process_sheet(file_path, sheet_id, exam_id, version)
-from ..db.models import Sheet  # model placeholder
+from core.config import settings
+from db.session import get_db
+from db import crud  # implement later: create_sheet_record, update_sheet_status, get_sheet_by_id
+from services import omr_service  # implement later: process_sheet(file_path, sheet_id, exam_id, version)
+from db.models import Sheet  # model placeholder
 
 router = APIRouter(prefix="/omr", tags=["omr"])
 

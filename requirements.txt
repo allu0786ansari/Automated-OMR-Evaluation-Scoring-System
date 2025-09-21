@@ -22,3 +22,4 @@ requests
 pymysql
 passlib
 bcrypt
+pydantic-settings

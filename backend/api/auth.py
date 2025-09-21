@@ -9,10 +9,10 @@ from pydantic import BaseModel
 from passlib.context import CryptContext
 
 # These are local imports from your project (implement later)
-from ..core.config import settings
-from ..db.session import get_db
-from ..db.models import User  # implement in db/models.py
-from ..db import crud  # implement helper functions like get_user_by_username
+from core.config import settings
+from db.session import get_db
+from db.models import User  # implement in db/models.py
+from db import crud  # implement helper functions like get_user_by_username
 
 router = APIRouter(tags=["auth"])
 

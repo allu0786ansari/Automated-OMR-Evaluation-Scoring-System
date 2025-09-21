@@ -7,9 +7,9 @@ from fastapi.responses import StreamingResponse, JSONResponse
 from sqlalchemy.orm import Session
 import pandas as pd
 
-from ..db.session import get_db
-from ..db import crud  # implement functions like get_result_by_sheet, get_results_by_exam
-from ..services.export_service import generate_results_csv  # implement later
+from db.session import get_db
+from db import crud  # implement functions like get_result_by_sheet, get_results_by_exam
+from services.export_service import generate_results_csv  # implement later
 
 router = APIRouter(prefix="/results", tags=["results"])
 

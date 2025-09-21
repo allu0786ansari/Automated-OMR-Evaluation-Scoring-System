@@ -1,7 +1,7 @@
 # backend/core/config.py
-from pydantic import BaseSettings, Field, AnyUrl
+from pydantic_settings import BaseSettings
+from pydantic import Field
 from pathlib import Path
-from typing import Optional
 
 
 class Settings(BaseSettings):
@@ -12,12 +12,12 @@ class Settings(BaseSettings):
     # DB (MySQL)
     # Example: mysql+pymysql://user:password@localhost:3306/omr_db
     SQLALCHEMY_DATABASE_URL: str = Field(
-        "mysql+pymysql://omr_user:omr_pass@localhost:3306/omr_db",
+        default="mysql+pymysql://root:A6VLT%40%24cuDYA.4n@localhost:3306/omr_db",
         env="DATABASE_URL",
     )
 
     # File storage
-    BASE_DIR: Path = Path(__file__).resolve().parents[2]
+    BASE_DIR: Path = Path(__file__).resolve().parent.parent
     UPLOAD_DIR: Path = Field(default=BASE_DIR / "data" / "omr_samples")
     PROCESSED_DIR: Path = Field(default=BASE_DIR / "data" / "processed")
     OVERLAY_DIR: Path = Field(default=BASE_DIR / "data" / "overlays")
