@@ -2,8 +2,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.api import omr, results, auth
-from backend.core.config import settings
+from api import omr, results, auth
+from core.config import settings
 
 app = FastAPI(
     title=settings.APP_NAME,
