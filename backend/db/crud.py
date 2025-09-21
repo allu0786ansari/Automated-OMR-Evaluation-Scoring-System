@@ -32,7 +32,7 @@ async def get_user_by_username(db: Session, username: str) -> Optional[models.Us
 
 async def create_exam(db: Session, exam_id: str, name: str = None, metadata: dict = None):
     def _create():
-        exam = models.Exam(exam_id=exam_id, name=name, metadata=metadata)
+        exam = models.Exam(exam_id=exam_id, name=name, exam_metadata=metadata)
         db.add(exam)
         db.commit()
         db.refresh(exam)
