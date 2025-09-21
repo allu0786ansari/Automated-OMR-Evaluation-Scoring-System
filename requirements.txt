@@ -20,3 +20,4 @@ torch
 sentence-transformers
 requests
 pymysql
+passlib
