@@ -6,6 +6,15 @@ st.set_page_config(
     layout="wide"
 )
 
+if "token" not in st.session_state:
+    st.session_state.token = None
+
 st.title("📊 Automated OMR Evaluation System")
 st.markdown("Welcome! Use the sidebar to navigate between different sections:")
-st.sidebar.success("Choose a page above.")
+
+if st.session_state.token:
+    st.sidebar.success("✅ Logged in")
+    if st.sidebar.button("Logout"):
+        st.session_state.token = None
+else:
+    st.sidebar.warning("🔒 Please login first (go to Login Page)")
